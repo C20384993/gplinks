@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import weblogo from './GPLinksLogo.png';
 
 const Homepage = () => {
     {/*Fetch users from the database*/}
@@ -21,13 +20,12 @@ const Homepage = () => {
     {/*Empty array [] is the dependency array, having it empty only runs the function once when the component is first rendered*/}
 
     return ( 
-        <div className="homepage">	
-            <article className='centerArticle'>
-             Text here for homepage   
-            </article>
+        <div>
+            <p>
+                this is the Homepage
+            </p>
         </div>
-
-     );
+    );
 }
  
 export default Homepage;

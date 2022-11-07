@@ -4,7 +4,7 @@ const Loginpage = () => {
     return (
     <div className="loginpage">	
         <article className='centerArticle'>
-             Form for login and create account
+             Form for login and create accounts
             </article>
     </div> 
      );

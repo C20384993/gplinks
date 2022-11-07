@@ -1,19 +1,28 @@
 import { Link } from 'react-router-dom'
-import weblogo from './GPLinksLogo.png'
+import logo from './GPLinksLogo.png'
+import './Navbar.css'
 
 const Navbar = () => {
     return ( 
-        <header>
+        <body>
+            <div>
+                <img src={logo} alt="GP-Links logo" />
+            </div>
+
             <div className="navbar">
                 <Link to="/">
-                    Homepage
+                    //Homepage\\
                 </Link>
+                
                 <Link to="/loginpage">
-                    Login page
+                    //Login page\\
+                </Link>
+                <Link to="/doctors">
+                    //doctors\\
                 </Link>
             </div>
-        </header>
-     );
+        </body>
+    );
 }
  
 export default Navbar;
