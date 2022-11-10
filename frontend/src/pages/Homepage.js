@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import UserDetails from '../components/UserDetails';
 
 const Homepage = () => {
     {/*Fetch users from the database*/}
@@ -6,7 +7,7 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('http://localhost:4000/api/users')
+            const response = await fetch('/api/users')
             const json = await response.json()
             {/*Store the users from database in const json*/}
 
@@ -20,10 +21,13 @@ const Homepage = () => {
     {/*Empty array [] is the dependency array, having it empty only runs the function once when the component is first rendered*/}
 
     return ( 
-        <div>
-            <p>
-                this is the Homepage
-            </p>
+        <div className="home">
+            <div className="users">
+                {/*Only runs if there are values. Will not run if = null*/}
+                {users && users.map((user) => (
+                    <UserDetails key={user._id} user={user}/>
+                ))}
+            </div>
         </div>
     );
 }

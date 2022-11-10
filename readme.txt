@@ -22,7 +22,7 @@ nodemon (npm install -g nodemon, nodemon filename.js, re-runs the file for you i
 
 dotenv  (npm install dotenv, used to load environment variables from the .env file into the process.env object)
 
-npm run dev
+npm run dev: run this from /backend to start up the server.
 
 node.js filename: run a file
 backend/server.js: Entry file for backend application. Where the Express is registered.
@@ -50,3 +50,10 @@ frontend/src/components: stores all react components.
 
 
 
+
+AUTHENTICATION
+npm install bcrypt: backend, used to hash user passwords
+npm install validator: backend, provides standard checks/validations instead of having to write them out.
+
+JWT Web tokens: The authentication method used for this project.
+npm install jsonwebtoken (from backend)

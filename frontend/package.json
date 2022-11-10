@@ -1,5 +1,6 @@
 {
-  "name": "gp_links_work",
+  "proxy": "http://localhost:4000",
+  "name": "gplinks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

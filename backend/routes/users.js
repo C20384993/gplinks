@@ -1,8 +1,9 @@
 const express = require('express')
 const {
-    createUser,
     getUsers,
     getUser,
+    loginUser,
+    signupUser,
     deleteUser,
     updateUser
 } = require('../controllers/userController')
@@ -18,8 +19,11 @@ router.get('/', getUsers)
 //GET single user
 router.get('/:id', getUser)
 
-//POST new user
-router.post('/', createUser)
+//Login user
+router.post('/login', loginUser)
+
+//Signup new user
+router.post('/signup', signupUser)
 
 //DELETE user
 router.delete('/:id', deleteUser)

@@ -1,6 +1,13 @@
 const User = require('../models/userModel')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
 
+//Create a JWT Token for authentication
+//SECRET is the key used by the server for hashing the token.
+//expiresIn sets the amount of time the user is logged in for to 3 days. After that, he is logged out.
+const createToken = (_id) => {
+    return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d'})
+}
 
 //GET all users
 //Note: can change property to get specific results.
@@ -30,9 +37,40 @@ const getUser = async (req, res) => {
     res.status(200).json(user)
 }
 
+//Login a user
+const loginUser = async (req, res) => {
+    const {username, password} = req.body
 
+    //Try to login using the username and password from the req.body
+    try {
+        const user = await User.loginUser(username, password)
 
+        //Create a token using the user object that was just made
+        const token = createToken(user._id)
 
+        res.status(200).json({username, token})
+    } 
+    catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+//Singup a user/ Create user
+const signupUser = async (req, res) => {
+    const {username, password} = req.body
+    try{
+        const user = await User.signupUser(username, password)
+
+        //Create a token using the user object that was just made
+        const token = createToken(user._id)
+
+        res.status(200).json({username, token})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+/*
 //POST/Create new user
 const createUser = async (req, res) => {
     const {username, password} = req.body
@@ -44,7 +82,7 @@ const createUser = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
-
+*/
 
 
 
@@ -90,7 +128,8 @@ const updateUser = async (req, res) => {
 module.exports = {
     getUsers,
     getUser,
-    createUser,
+    loginUser,
+    signupUser,
     deleteUser,
     updateUser
 }
