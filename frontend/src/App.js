@@ -1,11 +1,12 @@
 import './index.css';
-import weblogo from './components/GPLinksLogo.png';
-import Searchbar from './components/Searchbar';
+//import Searchbar from './components/Searchbar';
 import Homepage from './pages/Homepage';
 import Navbar from './components/Navbar';
 import Loginpage from './pages/Loginpage';
+import Createaccountpage from './pages/Createaccountpage';
 import Doctors from './pages/Doctors';
-import Footerlinks from './components/Footerlinks';
+//import Footerlinks from './components/Footerlinks';
+import UserDoctors from './pages/UserDoctors';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -24,10 +25,15 @@ function App() {
             <Route path="/doctors">
               <Doctors />
             </Route>
+            <Route path="/createaccountpage">
+              <Createaccountpage />
+            </Route>
+            <Route path="/userdoctors">
+              <UserDoctors />
+            </Route>
           </Switch>
         </div>
       </div>
-      <Searchbar/>
     </Router>
   );
 }

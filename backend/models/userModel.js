@@ -18,9 +18,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-}, { timestamps: true })
+})
 
 //Static method, signs up the user and hashes their password
+//Cannot use arrow function because "this" keyword is used.
 userSchema.statics.signup = async function(username, password) {
 
     //Check that all fields are filled.
@@ -28,16 +29,17 @@ userSchema.statics.signup = async function(username, password) {
         throw Error('Please fill out all fields.')
     }
 
-    const exists = await this.findOne({ email })
+    const exists = await this.findOne({ username }) //Additional check to see if username is taken.
 
     if(exists) {
         throw Error('This username is taken')
     }
 
+    //Hash passwords so they aren't stored as plaintext.
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ username, password: hash})
+    const user = await this.create({ username, password: hash}) //Create the user.
 
     return user
 }
@@ -45,6 +47,7 @@ userSchema.statics.signup = async function(username, password) {
 //Static method, Logs the user into his account
 //Must be a regular function, not an arrow function, in order to reference the model itself.
 userSchema.statics.login = async function(username, password) {
+    //Check all fields have actually been filled out.
     if(!username || !password) {
         throw Error('Please fill all fields.')
     }
@@ -63,6 +66,7 @@ userSchema.statics.login = async function(username, password) {
         throw Error('Invalid password entered')
     }
 
+    //If user details are entered correctly, return that user.
     return user
 }
 

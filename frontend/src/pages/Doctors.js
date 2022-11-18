@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import walter from './DoctorImages/Walter_White.png'
 import chris from './DoctorImages/Chris_Han.png'
 import mary from './DoctorImages/Mary_Jones.png'
 
 const Doctors = () => {
     return(
-        <div className='Workers'>
+        <div className='doctors'>
 
             <div className='doc'>
 

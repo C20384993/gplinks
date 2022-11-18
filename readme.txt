@@ -1,3 +1,19 @@
+Frontend npm installs:
+npm install express
+npm install mongoose
+npm install bcrypt
+npm install validator
+
+Backend npm installs:
+npm install express
+npm install mongoose
+npm install react-router-dom
+npm install -g nodemon
+npm install dotenv
+
+npm install jsonwebtoken
+
+
 Technologies used:
 Node
 Express (npm install express)
@@ -57,3 +73,13 @@ npm install validator: backend, provides standard checks/validations instead of 
 
 JWT Web tokens: The authentication method used for this project.
 npm install jsonwebtoken (from backend)
+
+TO GET DOCTORS TO SHOW FOR INDIVIDUAL USERS:
+add this line to the doctors/prescriptions/etc routes
+workouts.js T 14, 11:50
+} = require('../controllers/workoutController')
+const reqAuth = require('../middleware/reqAuth') *** THIS LINE
+
+const router = express.Router()
+
+router.use(reqAuth) *** AND THIS LINE
