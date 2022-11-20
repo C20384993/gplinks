@@ -2,13 +2,14 @@
 import walter from './DoctorImages/Walter_White.png'
 import chris from './DoctorImages/Chris_Han.png'
 import mary from './DoctorImages/Mary_Jones.png'
+import jason from './DoctorImages/Jason_Lawer.png'
+import './Doctors.css'
 
 const Doctors = () => {
     return(
-        <div className='doctors'>
+        <div className='Workers'>
 
             <div className='doc'>
-
                 <img className='docImage' img src={walter}/>
                 <div>
                     Dr.White
@@ -16,7 +17,6 @@ const Doctors = () => {
             </div>
 
             <div className='doc'>
-
                 <img className='docImage' img src={chris}/>
                 <div>
                     Dr.Han
@@ -24,13 +24,18 @@ const Doctors = () => {
             </div>
 
             <div className='doc'>
-
                 <img className='docImage' img src={mary}/>
                 <div>
                     Dr.Jones
                 </div>
             </div>
 
+            <div className='doc'>
+                <img className='docImage' img src={jason}/>
+                <div>
+                    Jason Lawer
+                </div>
+            </div>
         </div>
     )
 }
