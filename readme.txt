@@ -3,6 +3,7 @@ npm install express
 npm install mongoose
 npm install bcrypt
 npm install validator
+npm install bootstrap
 
 Backend npm installs:
 npm install express

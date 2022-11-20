@@ -10,28 +10,28 @@ const Doctors = () => {
         <div className='Workers'>
 
             <div className='doc'>
-                <img className='docImage' img src={walter}/>
+                <img className='docImage' img src={walter} alt='walter'/>
                 <div>
                     Dr.White
                 </div>
             </div>
 
             <div className='doc'>
-                <img className='docImage' img src={chris}/>
+                <img className='docImage' img src={chris} alt='chris'/>
                 <div>
                     Dr.Han
                 </div>
             </div>
 
             <div className='doc'>
-                <img className='docImage' img src={mary}/>
+                <img className='docImage' img src={mary} alt='mary'/>
                 <div>
                     Dr.Jones
                 </div>
             </div>
 
             <div className='doc'>
-                <img className='docImage' img src={jason}/>
+                <img className='docImage' img src={jason} alt='jason'/>
                 <div>
                     Jason Lawer
                 </div>

@@ -7,6 +7,8 @@ import Createaccountpage from './pages/CreateAccountpage';
 import Doctors from './pages/Doctors';
 //import Footerlinks from './components/Footerlinks';
 import UserDoctors from './pages/UserDoctors';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
