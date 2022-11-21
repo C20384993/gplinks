@@ -1,20 +1,3 @@
-Frontend npm installs:
-npm install express
-npm install mongoose
-npm install bcrypt
-npm install validator
-npm install bootstrap
-
-Backend npm installs:
-npm install express
-npm install mongoose
-npm install react-router-dom
-npm install -g nodemon
-npm install dotenv
-
-npm install jsonwebtoken
-
-
 Technologies used:
 Node
 Express (npm install express)
@@ -39,7 +22,7 @@ nodemon (npm install -g nodemon, nodemon filename.js, re-runs the file for you i
 
 dotenv  (npm install dotenv, used to load environment variables from the .env file into the process.env object)
 
-npm run dev: run this from /backend to start up the server.
+npm run dev
 
 node.js filename: run a file
 backend/server.js: Entry file for backend application. Where the Express is registered.
@@ -63,24 +46,8 @@ backend/controllers/userController.js: Stores the functionality for route handli
 frontend/src/pages: stores all page components for the website.
 frontend/src/components: stores all react components.
 
+I added this new line here 
 
 
 
 
-
-AUTHENTICATION
-npm install bcrypt: backend, used to hash user passwords
-npm install validator: backend, provides standard checks/validations instead of having to write them out.
-
-JWT Web tokens: The authentication method used for this project.
-npm install jsonwebtoken (from backend)
-
-TO GET DOCTORS TO SHOW FOR INDIVIDUAL USERS:
-add this line to the doctors/prescriptions/etc routes
-workouts.js T 14, 11:50
-} = require('../controllers/workoutController')
-const reqAuth = require('../middleware/reqAuth') *** THIS LINE
-
-const router = express.Router()
-
-router.use(reqAuth) *** AND THIS LINE
