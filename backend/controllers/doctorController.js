@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 
 //GET all doctors
 const getDoctors = async (req, res) => {
-    const doctors = await Doctor.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+
+    const doctors = await Doctor.find({ user_id }).sort({createdAt: -1})
 
     res.status(200).json(doctors)
 }
@@ -47,7 +49,8 @@ const createDoctor = async (req, res) => {
     }
 
     try {
-        const doctor = await Doctor.create({doctorName, practice, doctorQualification}) //const doctor stores the created document and id.
+        const user_id = req.user._id
+        const doctor = await Doctor.create({doctorName, practice, doctorQualification, user_id}) //const doctor stores the created document and id.
         res.status(200).json(doctor) //Return status 200 to indicate no errors.
     } catch (error) {
         res.status(400).json({error: error.message})

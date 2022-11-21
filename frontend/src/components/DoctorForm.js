@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useDoctorsContext } from "../hooks/useDoctorsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const DoctorForm = () => {
     const { dispatch } = useDoctorsContext()
+    const { user } = useAuthContext()
+
     const [doctorName, setDoctorName] = useState('')
     const [practice, setPractice] = useState('')
     const [doctorQualification, setDoctorQualification] = useState('')
@@ -12,13 +15,19 @@ const DoctorForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if(!user) {
+            setError('You are not logged in!')
+            return
+        }
+
         const doctor = {doctorName, practice, doctorQualification}
 
         const response = await fetch('/api/doctors', {
             method: 'POST',
             body: JSON.stringify(doctor),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

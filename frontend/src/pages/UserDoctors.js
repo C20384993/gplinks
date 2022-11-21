@@ -11,7 +11,11 @@ const UserDoctors = () => {
 
     useEffect(() => {
         const fetchDoctors = async () => {
-        const response = await fetch('/api/doctors')
+        const response = await fetch('/api/doctors', {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
         const json = await response.json()
 
         if (response.ok) {
@@ -19,8 +23,10 @@ const UserDoctors = () => {
         }
     }
 
-    fetchDoctors()
-}, [dispatch])
+    if (user) {
+        fetchDoctors()
+    }
+}, [dispatch, user])
 
 return (
     <div className="userdoctors">

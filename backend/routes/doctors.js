@@ -7,8 +7,12 @@ const {
     updateDoctor
 } = require('../controllers/doctorController')
 
+const reqAuth = require('../middleware/reqAuth')
+
 //Create an instance of the Express router
 const router = express.Router()
+
+router.use(reqAuth)
 
 //Routes
 

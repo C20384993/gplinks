@@ -1,11 +1,19 @@
 import { useDoctorsContext } from '../hooks/useDoctorsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const DoctorDetails = ({ doctor }) => {
     const { dispatch } = useDoctorsContext()
+    const { user } = useAuthContext()
 
     const handleClick = async () => {
+        if (!user) {
+            return
+        }
         const response = await fetch('/api/doctors/'+doctor._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 
