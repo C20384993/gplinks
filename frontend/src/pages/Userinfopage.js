@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import UserDetails from "../components/UserDetails"
 
 const Userinfopage = () => {
-    const {user, dispatch, cur} = useAuthContext()
+    const {users, dispatch} = useAuthContext()
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -23,7 +23,9 @@ const Userinfopage = () => {
         <div className='userinfopage'>
             <h2>My Profile</h2>
             <div className="users">
-            <UserDetails key={cur._id} user={cur} />    
+                {users && users.map((user) => (
+                    <UserDetails key={user._id} user={user} />
+                ))}
             </div>
         </div>
     )

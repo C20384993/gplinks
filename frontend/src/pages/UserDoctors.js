@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useDoctorsContext } from "../hooks/useDoctorsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 import DoctorDetails from "../components/DoctorDetails"
 import DoctorForm from "../components/DoctorForm";
 
 const UserDoctors = () => {
    const {doctors, dispatch} = useDoctorsContext()
+   const { user } = useAuthContext()
 
     useEffect(() => {
         const fetchDoctors = async () => {
@@ -22,12 +24,27 @@ const UserDoctors = () => {
 
 return (
     <div className="userdoctors">
-        <div className="doctors">
-            {doctors && doctors.map((doctor) => (
-                <DoctorDetails key={doctor._id} doctor={doctor} />
-            ))}
-        </div>
-        <DoctorForm />
+        <h2>My Doctors</h2>
+        <br></br>
+        {user && (
+            <div className="doctors">
+                {doctors && doctors.map((doctor) => (
+                    <DoctorDetails key={doctor._id} doctor={doctor} />
+                ))}
+                <br></br>
+            </div>
+        )}
+        {user && (
+            <div>
+                <DoctorForm />
+            </div>
+        )}
+        {!user && (
+            <div>
+                <strong>You are not logged in!</strong>
+                <p>Please log into your account to view your doctors.</p>
+            </div>
+        )}
     </div>
     )
 }

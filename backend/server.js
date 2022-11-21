@@ -5,7 +5,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose') //Can use mongoose object to connect to db.
 const doctorRoutes = require('./routes/doctors') //Import the doctor routes.
-const userRoutes = require('./routes/user') //Import the user routes
+const userRoutes = require('./routes/users') //Import the user routes
 
 //Create the Express app
 const app = express()
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 //e.g. route = /api/users, in users.js we have router.get('/hello', () => {})
 //so when we go to '/api/users/hello', the '/hello' route in user.js runs.
 app.use('/api/doctors', doctorRoutes)
-app.use('/api/user', userRoutes)
+app.use('/api/users', userRoutes)
 
 //Connect to the database using Mongoose
 mongoose.connect(process.env.DB_URI)
