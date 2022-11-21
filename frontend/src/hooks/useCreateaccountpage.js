@@ -10,7 +10,7 @@ export const useCreateaccountpage = () => {
         setIsLoading(true) //Set state to loading when creating an account
         setError(null) //Reset the error status for each create account request
 
-        const response = await fetch('/api/user/signup', {
+        const response = await fetch('/api/users/signup', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'}, //Sending application/json data
             body: JSON.stringify({username, password}) //The data being sent, the username and password are sent as JSON

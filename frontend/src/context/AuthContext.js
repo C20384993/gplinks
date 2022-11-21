@@ -6,16 +6,22 @@ export const AuthContext = createContext()
 //type describes the action taken
 export const authReducer = (state, action) => {
     switch (action.type) {
+        case 'SET_USER':
+            console.log("Set")
+            return { user: action.payload };
         case 'LOGIN':
             //Return user logging in
             return { user: action.payload }
         case 'LOGOUT':
             return { user: null }
+        case 'DELETE_USER':
+            console.log("Delete User")
+            return { user: state.user.filter((u) => u._id !== action.payload._id) };
         default:
             //Return original state
             return state
     }
-
+    
 }
 
 //Function is used by other components to update the state.
@@ -27,9 +33,11 @@ export const AuthContextProvider = ({ children }) => {
         user: null
     })
 
+    //Only runs once, when the component is first rendered.
     useEffect(() => {
+        //localStorage.getItem('user') is a JSON string, it's being passed into an object that will be used in Javascript.
         const user = JSON.parse(localStorage.getItem('user'))
-
+        //Only update if the user info is in local storage.
         if (user) {
             dispatch({ type: 'LOGIN', payload: user })
         }
