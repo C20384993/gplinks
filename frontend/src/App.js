@@ -3,10 +3,11 @@ import './index.css';
 import Homepage from './pages/Homepage';
 import Navbar from './components/Navbar';
 import Loginpage from './pages/Loginpage';
-import Createaccountpage from './pages/CreateAccountpage';
+import Createaccountpage from './pages/Createaccountpage';
 import Doctors from './pages/Doctors';
 //import Footerlinks from './components/Footerlinks';
 import UserDoctors from './pages/UserDoctors';
+import Userinfopage from './pages/Userinfopage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -35,6 +36,9 @@ function App() {
               </Route>
               <Route path="/userdoctors">
                 <UserDoctors />
+              </Route>
+              <Route path="/userinfopage">
+                <Userinfopage />
               </Route>
             </Switch>
           </div>

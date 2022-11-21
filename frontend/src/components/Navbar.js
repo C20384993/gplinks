@@ -29,6 +29,9 @@ const Navbar = () => {
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/">Homepage</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/doctors">Doctors Page</a>
+                            </li>
                             {!user && (
                                 <div>
                                     <li class="nav-item">
@@ -39,15 +42,15 @@ const Navbar = () => {
                                     </li>
                                 </div>
                             )}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/doctors">Doctors Page</a>
-                            </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/userdoctors">user's doctors</a>
-                            </li>
                             {user && (
                                 <div>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/userinfopage">My Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/userdoctors">My Doctors</a>
+                                    </li>
                                     <span>{user.username}</span>
                                     <button onClick={handleClick}>
                                         Log out

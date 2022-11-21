@@ -11,7 +11,9 @@ const createToken = (_id) => {
 
 //GET all doctors
 const getUsers = async (req, res) => {
-    res.json({mssg: 'GET users'})
+    const user = await User.find({}).sort({createdAt: -1})
+
+    res.status(200).json(user)
 }
 
 //Login a user
@@ -50,7 +52,7 @@ const signupUser = async (req, res) => {
 
 
 
-/*//DELETE user
+//DELETE user
 const deleteUser = async (req, res) => {
     const { id } = req.params
 
@@ -65,7 +67,7 @@ const deleteUser = async (req, res) => {
     }
 
     res.status(200).json(User)
-} */
+}
 
 
 
@@ -89,4 +91,4 @@ const deleteUser = async (req, res) => {
 } */
 
 
-module.exports = {getUsers, loginUser, signupUser}
+module.exports = {getUsers, loginUser, signupUser, deleteUser}

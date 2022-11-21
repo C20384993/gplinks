@@ -4,6 +4,7 @@ import chris from './DoctorImages/Chris_Han.png'
 import mary from './DoctorImages/Mary_Jones.png'
 import jason from './DoctorImages/Jason_Lawer.png'
 import './Doctors.css'
+import SearchBar from '../components/Searchbar'
 
 const Doctors = () => {
     return(
@@ -36,6 +37,7 @@ const Doctors = () => {
                     Jason Lawer
                 </div>
             </div>
+            <SearchBar/>
         </div>
     )
 }
