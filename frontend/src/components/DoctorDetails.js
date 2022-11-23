@@ -28,7 +28,7 @@ const DoctorDetails = ({ doctor }) => {
             <p><strong>Practicing: </strong>{doctor.practice}</p>
             <p><strong>Qualification: </strong>{doctor.doctorQualification}</p>
             <p>{doctor.createdAt}</p>
-            <span onClick={handleClick}>delete</span>
+            <button onClick={handleClick}>Delete Doctor entry</button>
         </div>
     )
 }

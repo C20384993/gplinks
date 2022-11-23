@@ -14,9 +14,6 @@ export const authReducer = (state, action) => {
             return { user: action.payload }
         case 'LOGOUT':
             return { user: null }
-        case 'DELETE_USER':
-            console.log("Delete User")
-            return { user: state.user.filter((u) => u._id !== action.payload._id) };
         default:
             //Return original state
             return state

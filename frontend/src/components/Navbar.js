@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
 import logo from './GPLinksLogo.png'

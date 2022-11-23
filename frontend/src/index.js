@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UsersContextProvider } from './context/UserContext';
 import { DoctorsContextProvider } from './context/DoctorContext';
 import { AuthContextProvider } from './context/AuthContext';
 
@@ -11,7 +12,9 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <DoctorsContextProvider>
+        <UsersContextProvider>
         <App />
+        </UsersContextProvider>
       </DoctorsContextProvider>
     </AuthContextProvider>
   </React.StrictMode>

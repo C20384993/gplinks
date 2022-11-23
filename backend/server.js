@@ -3,9 +3,13 @@
 require('dotenv').config()
 
 const express = require('express')
+const cors = require('cors')
 const mongoose = require('mongoose') //Can use mongoose object to connect to db.
 const doctorRoutes = require('./routes/doctors') //Import the doctor routes.
 const userRoutes = require('./routes/users') //Import the user routes
+const parser = require('body-parser');
+const urlencodedParser = parser.urlencoded({extended : false});
+
 
 //Create the Express app
 const app = express()
@@ -19,8 +23,19 @@ app.use(express.json())
 //Log the requests coming in.
 app.use((req, res, next) => {
     console.log(req.path, req.method)
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE");
     next()
-})
+});
+
+app.use(cors());
+app.use(cors({
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
+
+app.use(parser .json());
+app.use(urlencodedParser)
 
 //Route
 //(route, const routes),
@@ -29,6 +44,10 @@ app.use((req, res, next) => {
 //so when we go to '/api/users/hello', the '/hello' route in user.js runs.
 app.use('/api/doctors', doctorRoutes)
 app.use('/api/users', userRoutes)
+
+app.get('/cors', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+})
 
 //Connect to the database using Mongoose
 mongoose.connect(process.env.DB_URI)

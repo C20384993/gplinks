@@ -74,6 +74,7 @@ const DoctorForm = () => {
             />
             <button>Add doctor</button>
             {error && <div className="error">{error}</div>}
+            <br></br>
         </form>
     )
 }

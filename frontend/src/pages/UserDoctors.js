@@ -51,6 +51,11 @@ return (
                 <p>Please log into your account to view your doctors.</p>
             </div>
         )}
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
     </div>
     )
 }
