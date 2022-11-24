@@ -1,4 +1,7 @@
 import './Homepage.css'
+import about from './Homepage_pics/AboutUs.png'
+import review from './Homepage_pics/Reviews.png'
+import group from './Homepage_pics/Group_Doc.png'
 
 const Homepage = () => {
    
@@ -11,13 +14,13 @@ const Homepage = () => {
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="https://images.hollandandbarrettimages.co.uk/productimages/HB/724/045937_A.jpg" class="d-block pictures" alt="medicine 1"/>
+                <img src= {about} class="d-block pictures" alt="medicine 1"/>
                 </div>
                 <div class="carousel-item">
-                <img src="https://www.opticalrooms.ie/wp-content/uploads/2017/03/Hylo-Forte-7.5-ml-Lubricating-preservative-free-eye-drops.jpg" class="d-block pictures" alt="medicine 1"/>
+                <img src={review} class="d-block pictures" alt="medicine 1"/>
                 </div>
                 <div class="carousel-item">
-                <img src="https://mclaughlins.ie/wp-content/uploads/2021/01/tensoplast.png" class="d-block pictures" alt="medicine 1"/>
+                <img src={group} class="d-block pictures" alt="medicine 1"/>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

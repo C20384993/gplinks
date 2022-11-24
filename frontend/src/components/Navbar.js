@@ -1,6 +1,7 @@
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
 import logo from './GPLinksLogo.png'
+import award from './Award.png'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -15,6 +16,7 @@ const Navbar = () => {
         <div className='navigationBar'>
             <div>
                 <img src={logo} alt="GP-Links logo" />
+                <img className='Award' src={award} alt="Review"/>
             </div>
 
             <nav class="navbar navbar-expand navbar-dark bg-success" aria-label="Second navbar example">
@@ -57,10 +59,6 @@ const Navbar = () => {
                                 </div>
                             )}
                         </ul>
-                        <form role="search">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            </input>
-                        </form>
                     </div>
                 </div>
             </nav>
