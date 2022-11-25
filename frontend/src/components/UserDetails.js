@@ -12,12 +12,12 @@ const UserDetails = ({ user }) => {
                 'content-type': 'application.json, charset=UTF-8'
             }
         })
+        logout()
         const json = await response.json()
 
         if (response.ok) {
             dispatch({type: 'DELETE_USER', payload: json}) //Call DELETE_USER from UserContext.js
         }
-        logout()
     }
 
     return (
