@@ -18,13 +18,13 @@ const getUsers = async (req, res) => {
 
 //GET single user
 const getUser = async (req, res) => {
-    const { id } = req.params
+    const { username } = req.params
 
-    if(!mongoose.Types.ObjectId.isValid()) {
-        return res.status(404).json({error: 'User not found'})
-    }
+    //if(!mongoose.Types.ObjectId.isValid()) {
+     //   return res.status(404).json({error: 'User not found'})
+    //}
     
-    const user = await User.findById(id)
+    const user = await User.find( {username: username} ) //Find the document with the matching username.
 
     if (!user) {
         return res.status(404).json({error: 'User not found'})

@@ -1,7 +1,9 @@
 import { useUsersContext } from '../hooks/useUsersContext'
+import { useLogout } from '../hooks/useLogout'
 
 const UserDetails = ({ user }) => {
     const { dispatch } = useUsersContext()
+    const { logout } = useLogout()
 
     const handleClick = async () => {
         const response = await fetch('http://localhost:4000/api/users/del/'+user._id, {
@@ -15,6 +17,7 @@ const UserDetails = ({ user }) => {
         if (response.ok) {
             dispatch({type: 'DELETE_USER', payload: json}) //Call DELETE_USER from UserContext.js
         }
+        logout()
     }
 
     return (

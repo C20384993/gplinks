@@ -3,7 +3,7 @@ import './index.css';
 import Homepage from './pages/Homepage';
 import Navbar from './components/Navbar';
 import Loginpage from './pages/Loginpage';
-import Createaccountpage from './pages/CreateAccountpage';
+import Createaccountpage from './pages/Createaccountpage';
 import Doctors from './pages/Doctors';
 //import Footerlinks from './components/Footerlinks';
 import UserDoctors from './pages/UserDoctors';

@@ -10,7 +10,7 @@ const Userinfopage = () => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-        const response = await fetch('/api/users')
+        const response = await fetch('/api/users/'+user.username)
         const json = await response.json()
 
         if (response.ok) {
@@ -19,7 +19,7 @@ const Userinfopage = () => {
     }
 
     fetchUsers()
-}, [dispatch])
+}, [dispatch, user])
 
     return (
         <div className='userinfopage'>
