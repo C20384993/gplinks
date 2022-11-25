@@ -1,3 +1,20 @@
+Frontend npm installs:
+npm install express
+npm install mongoose
+npm install bcrypt
+npm install validator
+npm install bootstrap
+
+Backend npm installs:
+npm install express
+npm install mongoose
+npm install react-router-dom
+npm install -g nodemon
+npm install dotenv
+
+npm install jsonwebtoken
+
+
 Technologies used:
 Node
 Express (npm install express)
@@ -45,9 +62,3 @@ backend/controllers/userController.js: Stores the functionality for route handli
 
 frontend/src/pages: stores all page components for the website.
 frontend/src/components: stores all react components.
-
-I added this new line here 
-
-
-
-
