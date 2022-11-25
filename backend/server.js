@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     console.log(req.path, req.method)
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE");
+    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH");
     next()
 });
 
@@ -36,6 +36,11 @@ app.use(cors({
 
 app.use(parser .json());
 app.use(urlencodedParser)
+
+app.get('/', function(req, res){
+    console.log("Root Route")
+    res.json({ message: "" });
+});
 
 //Route
 //(route, const routes),
@@ -52,8 +57,9 @@ app.get('/cors', (req, res) => {
 //Connect to the database using Mongoose
 mongoose.connect(process.env.DB_URI)
     .then(() => {
+        port = 4000
         //Listen for requests on Port 4000 AFTER connecting to the db.
-        app.listen(process.env.PORT, () => {
+        app.listen(port, () => {
             console.log('Connected, listening on port', process.env.PORT)
         })
     })

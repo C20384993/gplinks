@@ -1,6 +1,7 @@
 const User = require('../models/userModel')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 //Create a JWT Token for authentication
 //SECRET is the key used by the server for hashing the token.
@@ -89,23 +90,22 @@ const deleteUser = async (req, res) => {
 
 
 //UPDATE user
-/*const updateUser = async (req, res) => {
-    const { id } = req.params
+const updateUser = async (req, res) => {
+    const {username, password} = req.body
+    //Hash passwords so they aren't stored as plaintext.
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'User could not be found'})
-    }
+    
 
-    const user = await User.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
+    const user = await User.findOneAndUpdate({username: username}, {password: hash})
 
     if (!user) {
         return res.status(400).json({error: 'User could not be found'})
     }
 
     res.status(200).json(user)
-} */
+}
 
 
-module.exports = {getUsers, getUser, loginUser, signupUser, deleteUser}
+module.exports = {getUsers, getUser, loginUser, signupUser, deleteUser, updateUser}

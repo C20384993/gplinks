@@ -7,8 +7,8 @@ const SearchBar = () => {
         <div className="searchbar">
             <input type="text" placeholder="Search for..." 
             onChange={event => {setSearchTerm(event.target.value)}}/>
-            {DoctorsList.filter((val)=> {
-                if (searchTerm == "") {
+            {DoctorsList.filter((val) => {
+                if (searchTerm === "") {
                     return val
                 } else if (val.doctorName.toLowerCase().includes(searchTerm.toLowerCase())) {
                     return val

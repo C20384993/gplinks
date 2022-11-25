@@ -19,6 +19,11 @@ export const usersReducer = (state, action) => {
             return {
                 users: state.users.filter((u) => u._id !== action.payload._id)
             };
+        case 'PATCH_USER':
+            console.log("Update password")
+            return {
+                users: action.payload
+            };
         default:
             return state
     }
