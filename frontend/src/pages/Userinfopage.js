@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useUsersContext } from "../hooks/useUsersContext";
 import { useAuthContext } from '../hooks/useAuthContext'
-//import { useState } from "react";
+import { useState } from "react";
 
 import UserDetails from "../components/UserDetails"
 
 const Userinfopage = () => {
-    const {users, dispatch} = useUsersContext()
+    const {dispatch} = useUsersContext()
     const { user } = useAuthContext()
-    //const [username, setUsername] = useState('')
-    //const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
 
     useEffect(() => {
@@ -25,32 +25,32 @@ const Userinfopage = () => {
     fetchUsers()
 }, [dispatch, user])
 
-    //------------------------------------------------------------------------------------------------------------------------
-    /* UPDATE handleSubmit form with errors, causes backend server to crash, route works in Postman.
-    //When form is submitted, try to update the user
-    //async as it will need to interact with the backend */
-    /*const handleSubmit = async (e) => {
-        e.preventDefault()
-        await fetch('http://localhost:4000/api/users/update', {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application.json'
-            },
-            body: JSON.stringify({username, password})
+const handleSubmit = async (e) => {
+    const response = await fetch('http://localhost:4000/api/users/update/', {
+        method: 'PATCH',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify(
+            {
+                "username" : username,
+                "password" : password
+            })
         })
         
-        .then((res) => {
-            return res.json();
-        })
-        //const json = await response.json()
+        const json = JSON.stringify({username, password})
 
-        //if (response.ok) {
-        //    dispatch({type: 'PATCH_USER', payload: json}) //Call PATCH_USER from UserContext.js
-        //}
-    } 
+        if (response.ok) {
+            dispatch({type: 'UPDATE_USER', payload: json}) //Call DELETE_USER from UserContext.js
+        }
+}
 
-    
-    {users && users.map((user) => (
+    return (
+        <div className='userinfopage'>
+            <h2>My Profile</h2>
+            {user && (
+                <div className="users">
+                
+                    <UserDetails key={user._id} user={user} />
+                
                     <form onSubmit={handleSubmit}>
                         <strong>Change Password</strong>
                         <label>Enter new Password: </label>
@@ -59,26 +59,11 @@ const Userinfopage = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
                         />
-                        <input
-                            type="text"
-                            onChange={(e) => setUsername(e.target.value)}
-                            value={username}
-                        />
 
-                        <button>Update Password</button>
+                        <button onClick={() => setUsername(user.username)}>Update Password</button>
+                        <p>------------------------------------------</p>
                     </form>
-                ))} */
-        //---------------------------------------------------------------------------------------------------
-
-    return (
-        <div className='userinfopage'>
-            <h2>My Profile</h2>
-            {user && (
-            <div className="users">
-                {users && users.map((user) => (
-                    <UserDetails key={user._id} user={user} />
-                ))}
-            </div>
+                </div>
             )}
             {!user && (
                 <div className="users">

@@ -92,11 +92,10 @@ const deleteUser = async (req, res) => {
 //UPDATE user
 const updateUser = async (req, res) => {
     const {username, password} = req.body
+
     //Hash passwords so they aren't stored as plaintext.
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
-
-    
 
     const user = await User.findOneAndUpdate({username: username}, {password: hash})
 
