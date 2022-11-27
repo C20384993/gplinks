@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Loginpage from './pages/Loginpage';
 import Createaccountpage from './pages/CreateAccountpage';
 import Doctors from './pages/Doctors';
+import Medicine from './pages/Medicine';
 //import Footerlinks from './components/Footerlinks';
 import UserDoctors from './pages/UserDoctors';
 import Userinfopage from './pages/Userinfopage'
@@ -30,6 +31,9 @@ function App() {
               </Route>
               <Route path="/doctors">
                 <Doctors />
+              </Route>
+              <Route path="/medicine">
+                <Medicine />
               </Route>
               <Route path="/createaccountpage">
                 <Createaccountpage />

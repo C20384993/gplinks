@@ -58,6 +58,9 @@ const Navbar = () => {
                                     </button>
                                 </div>
                             )}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/medicine">Medicines</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
